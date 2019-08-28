@@ -1,0 +1,175 @@
+ 
+javascript questions:
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+
+ code#1:let promise = new Promise(function(resolve, reject) {
+  resolve(1);
+
+  setTimeout(() => resolve(2), 1000);
+});
+
+promise.then(alert);
+
+solu:1 second one is ignored
+The output is: 1.
+
+The second call to resolve is ignored, because only the first call of reject/resolve is taken into account. Further calls are ignored.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+code#2:function delay(ms) {
+  // your code
+}
+
+delay(3000).then(() => alert('runs after 3 seconds'));
+
+solution:setimeout(resolve,ms) 
+
+return new Promise(resolve => setTimeout(resolve, ms));
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+JavaScript | console.log() with Examples
+The console.log() is a function in JavaScript which is used to print any kind of variables defined before in it or to just print any message that needs to be displayed to the user.
+
+Syntax:
+
+console.log(A);
+Parameters: It accepts a parameter which can be an array, an object or any message.
+Return value: It returns the value of the parameter given.
+JavaScript codes to show the working of this function:
+
+1) Passing a number as an argument: If the number is passed to the function console.log() then the function will display it.
+Code #1:
+
+brightness_4
+<script> 
+var a = 2; 
+console.log(a); 
+</script> 
+Output:2
+
+2) Passing a string as an argument: If the string is passed to the function console.log(), then the function will display it.
+Code #2:
+<script> 
+var str = "GeeksforGeeks"; 
+console.log(str); 
+</script> 
+Output:GeeksforGeeks
+
+
+3) Passing a char as an argument: If the char is passed to the function console.log(), then the function will display it.
+Code #3
+brightness_4
+<script> 
+var ch = '2'; 
+console.log(ch); 
+</script> 
+Output:2
+
+4) Passing a message as an argument: If the message is passed to the function console.log(), then the function will display the given message.
+Code #4:
+brightness_4
+<script> 
+console.log("GeeksforGeeks"); 
+</script> 
+Output:GeeksforGeeks
+
+5) Passing a function as an argument: If the function is passed to the function console.log(), then the function will display the value of the passed function().
+Code #5:
+brightness_4
+<script> 
+function func() { return (5 * 19); } 
+console.log(func()); 
+</script> 
+Output:95
+
+6) Passing a number with message as an argument: If the number is passed to the function console.log(), then the function will display it along with the given message.
+Code #6:
+brightness_4
+<script> 
+var a = 2; 
+console.log("The value of a is " + a); 
+</script> 
+Output:the value of a is 2
+
+7) Passing a string with message as an argument: If the string is passed to the function console.log(), then the function will display it along with the given message.
+Code #7:
+brightness_4
+<script> 
+var str = "GeeksforGeeks"; 
+console.log("The value of str is " + str); 
+</script> 
+Output:the value of a is GeeksforGeeks
+
+8) Passing a char with message as an argument: If the char is passed to the function console.log(), then the function will display it along with the given message.
+Code #8:
+brightness_4
+<script> 
+var ch = '2'; 
+console.log("The value of ch is " + ch); 
+</script> 
+Output:the value of a is 2 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+code#:
+(function() {
+    console.log(1); 
+    setTimeout(function(){console.log(2)}, 1000); 
+    setTimeout(function(){console.log(3)}, 0); 
+    console.log(4);
+})();
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------code#:
+console.log(1 +  "2" + "2");
+console.log(1 +  +"2" + "2");
+console.log(1 +  -"1" + "2");
+console.log(+"1" +  "1" + "2");
+console.log( "A" - "B" + "2");
+console.log( "A" - "B" + 2);
+The above code will output the following to the console:
+
+"122"
+"32"
+"02"
+"112"
+"NaN2"
+NaN
+Here’s why…
+
+The fundamental issue here is that JavaScript (ECMAScript) is a loosely typed language and it performs automatic type conversion on values to accommodate the operation being performed. Let’s see how this plays out with each of the above examples.
+
+Example 1: 1 + "2" + "2" Outputs: "122" Explanation: The first operation to be performed in 1 + "2". Since one of the operands ("2") is a string, JavaScript assumes it needs to perform string concatenation and therefore converts the type of 1 to "1", 1 + "2" yields "12". Then, "12" + "2" yields "122".
+
+Example 2: 1 + +"2" + "2" Outputs: "32" Explanation: Based on order of operations, the first operation to be performed is +"2" (the extra + before the first "2" is treated as a unary operator). Thus, JavaScript converts the type of "2" to numeric and then applies the unary + sign to it (i.e., treats it as a positive number). As a result, the next operation is now 1 + 2 which of course yields 3. But then, we have an operation between a number and a string (i.e., 3 and "2"), so once again JavaScript converts the type of the numeric value to a string and performs string concatenation, yielding "32".
+
+Example 3: 1 + -"1" + "2" Outputs: "02" Explanation: The explanation here is identical to the prior example, except the unary operator is - rather than +. So "1" becomes 1, which then becomes -1 when the - is applied, which is then added to 1 yielding 0, which is then converted to a string and concatenated with the final "2" operand, yielding "02".
+
+Example 4: +"1" + "1" + "2" Outputs: "112" Explanation: Although the first "1" operand is typecast to a numeric value based on the unary + operator that precedes it, it is then immediately converted back to a string when it is concatenated with the second "1" operand, which is then concatenated with the final "2" operand, yielding the string "112".
+
+Example 5: "A" - "B" + "2" Outputs: "NaN2" Explanation: Since the - operator can not be applied to strings, and since neither "A" nor "B" can be converted to numeric values, "A" - "B" yields NaN which is then concatenated with the string "2" to yield “NaN2”.
+
+Example 6: "A" - "B" + 2 Outputs: NaN Explanation: As exlained in the previous example, "A" - "B" yields NaN. But any operator applied to NaN with any other numeric operand will still yield NaN.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+React.Stuff:
+
+    
+What is the difference between Element and Component?
+
+An Element is a plain object describing what you want to appear on the screen in terms of the DOM nodes or other components. Elements can contain other Elements in their props. Creating a React element is cheap. Once an element is created, it is never mutated.
+
+The object representation of React Element would be as follows:
+
+const element = React.createElement(
+  'div',
+  {id: 'login-btn'},
+  'Login'
+)
+The above React.createElement() function returns an object:
+
+{
+  type: 'div',
+  props: {
+    children: 'Login',
+    id: 'login-btn'
+  }
+}
+And finally it renders to the DOM using ReactDOM.render():
+
+<div id='login-btn'>Login</div>
